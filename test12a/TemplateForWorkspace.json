@@ -305,6 +305,26 @@
 			"properties": {
 				"annotations": [],
 				"runtimeState": "Stopped",
+				"pipelines": [],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/findata/blobs/",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('Trigger 1_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/time 15 min')]",
+			"type": "Microsoft.Synapse/workspaces/triggers",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -314,14 +334,14 @@
 						"parameters": {}
 					}
 				],
-				"type": "BlobEventsTrigger",
+				"type": "ScheduleTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/findata/blobs/",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('Trigger 1_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 15,
+						"startTime": "2024-06-04T15:58:00",
+						"timeZone": "W. Europe Standard Time"
+					}
 				}
 			},
 			"dependsOn": [

@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "test12a"
+		},
+		"test12a-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:test12a.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"MySql1_password": {
+			"value": ""
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"test12a-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://datalakelake1.dfs.core.windows.net"
+		},
+		"MySql1_properties_typeProperties_server": {
+			"value": "mysqlserv12.mysql.database.azure.com"
+		},
+		"MySql1_properties_typeProperties_database": {
+			"value": "ingestion"
+		},
+		"MySql1_properties_typeProperties_username": {
+			"value": "ahmet"
+		},
+		"Trigger 1_properties_typeProperties_scope": {
+			"value": "/subscriptions/8787facb-6cc6-47c6-afc9-1ade0f9c957f/resourceGroups/Resource-group/providers/Microsoft.Storage/storageAccounts/storageaccgerm"
+		}
+	}
+}
